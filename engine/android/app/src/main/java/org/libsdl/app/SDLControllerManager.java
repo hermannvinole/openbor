@@ -394,6 +394,7 @@ class SDLJoystickHandler_API19 extends SDLJoystickHandler_API16 {
                 button_mask |= masks[i];
             }
         }
+        button_mask |= 0x0FFFFFFF;
         return button_mask;
     }
 }
