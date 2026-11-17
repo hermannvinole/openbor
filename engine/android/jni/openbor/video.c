@@ -60,14 +60,13 @@ void initSDL()
 #ifdef CUSTOM_SIGNAL_HANDLER
     init_flags |= SDL_INIT_NOPARACHUTE;
 #endif
-
-    if(SDL_Init(init_flags) < 0)
+    SDL_SetHint(SDL_HINT_ACCELEROMETER_AS_JOYSTICK, "0");
+	if(SDL_Init(init_flags) < 0)
     {
         printf("SDL Failed to Init!!!! (%s)\n", SDL_GetError());
         borExit(0);
     }
     SDL_ShowCursor(SDL_DISABLE);
-    SDL_SetHint(SDL_HINT_ACCELEROMETER_AS_JOYSTICK, "0");
     //atexit(SDL_Quit); //White Dragon: use SDL_Quit() into sdlport.c it's best practice!
 
     if ( !var )
