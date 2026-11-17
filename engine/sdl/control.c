@@ -349,7 +349,6 @@ void joystick_scan(int scan)
 
 	if(!scan) return;
 
-	numjoy = SDL_NumJoysticks();
 void joystick_scan(int scan)
 {
 	int i;
@@ -361,8 +360,6 @@ void joystick_scan(int scan)
 	if (scan != 2)
 	{
 	
-	if (scan != 2)
-    {
         if(numjoy <= 0)
         {
             printf("No Joystick(s) Found!\n");
