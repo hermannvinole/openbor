@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+android {
+    namespace 'org.openbor.engine'
+    compileSdk 33
+    ndkVersion '21.4.7075529'
+
+    defaultConfig {
+        applicationId 'org.openbor.engine'
+        minSdk 19
+        targetSdk 19
+        versionCode 1
+        versionName '1.4.4'
+        externalNativeBuild {
+            ndkBuild {
+                abiFilters 'armeabi-v7a'
+            }
+        }
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            res.srcDirs = ['res']
+        }
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path 'jni/Android.mk'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        abortOnError false
+    }
+}
