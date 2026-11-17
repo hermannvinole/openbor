@@ -343,11 +343,6 @@ char* get_joystick_name(const char* name)
 Search for usb joysticks. Set
 types, defaults and keynames.
 */
-void joystick_scan(int scan)
-{
-	int i;
-
-	if(!scan) return;
 
 void joystick_scan(int scan)
 {
@@ -356,6 +351,17 @@ void joystick_scan(int scan)
 	if(!scan) return;
 
 	numjoy = SDL_NumJoysticks();
+	
+		{
+		int d;
+		for(d = 0; d < numjoy; d++)
+		{
+			SDL_Joystick *tj = SDL_JoystickOpen(d);
+			printf("DEBUG dispositivo %d: %s", d, SDL_JoystickNameForIndex(d));
+			if(tj) printf(" - %d ejes, %d botones, %d hats\n", SDL_JoystickNumAxes(tj), SDL_JoystickNumButtons(tj), SDL_JoystickNumHats(tj));
+			else printf(" - no se pudo abrir\n");
+		}
+	}
 
 	if (scan != 2)
 	{
