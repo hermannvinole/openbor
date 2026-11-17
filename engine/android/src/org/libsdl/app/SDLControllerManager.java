@@ -104,8 +104,15 @@ public class SDLControllerManager
         }
         **/
 
+                String devName = device.getName();
+        if (devName != null) {
+            String n = devName.toLowerCase();
+            if (n.contains("virtual") || n.contains("vvkeyboard") || n.contains("ir receiver")) {
+                return false;
+            }
+        }
+
         return (((sources & InputDevice.SOURCE_CLASS_JOYSTICK) == InputDevice.SOURCE_CLASS_JOYSTICK) ||
-                ((sources & InputDevice.SOURCE_DPAD) == InputDevice.SOURCE_DPAD) ||
                 ((sources & InputDevice.SOURCE_GAMEPAD) == InputDevice.SOURCE_GAMEPAD)
         );
     }
