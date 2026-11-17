@@ -350,7 +350,17 @@ void joystick_scan(int scan)
 	if(!scan) return;
 
 	numjoy = SDL_NumJoysticks();
+void joystick_scan(int scan)
+{
+	int i;
 
+	if(!scan) return;
+
+	numjoy = SDL_NumJoysticks();
+
+	if (scan != 2)
+	{
+	
 	if (scan != 2)
     {
         if(numjoy <= 0)
