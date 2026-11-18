@@ -943,24 +943,7 @@ void control_update(s_playercontrols ** playercontrols, int numplayers)
 				}
 			}
 		}
-		#ifdef ANDROID
-		if(usejoy && player < JOY_LIST_TOTAL && joystick[player] != NULL && joysticks[player].NumButtons >= 15)
-		{
-			u64 pb = joysticks[player].Buttons;
-			u64 pa = joysticks[player].Axes;
-			if(((pb >> 11) & 1) || (pa & 0x04)) k |= (1<<SDID_MOVEUP);
-			if(((pb >> 12) & 1) || (pa & 0x08)) k |= (1<<SDID_MOVEDOWN);
-			if(((pb >> 13) & 1) || (pa & 0x01)) k |= (1<<SDID_MOVELEFT);
-			if(((pb >> 14) & 1) || (pa & 0x02)) k |= (1<<SDID_MOVERIGHT);
-			if((pb >> 2) & 1)  k |= (1<<SDID_ATTACK);
-			if((pb >> 3) & 1)  k |= (1<<SDID_ATTACK2);
-			if((pb >> 9) & 1)  k |= (1<<SDID_ATTACK3);
-			if((pb >> 10) & 1) k |= (1<<SDID_ATTACK4);
-			if((pb >> 0) & 1)  k |= (1<<SDID_JUMP);
-			if((pb >> 1) & 1)  k |= (1<<SDID_SPECIAL);
-			if(((pb >> 6) & 1) || ((pb >> 4) & 1)) k |= (1<<SDID_START);
-		}
-#endif
+		
 		
 		pcontrols->kb_break = 0;
 		pcontrols->newkeyflags = k & (~pcontrols->keyflags);
