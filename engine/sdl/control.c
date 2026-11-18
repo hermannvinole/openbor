@@ -949,17 +949,17 @@ void control_update(s_playercontrols ** playercontrols, int numplayers)
 			u64 pb = joysticks[player].Buttons;
 			u64 pa = joysticks[player].Axes;
 			k = 0; // el mando manda: se ignora la configuracion guardada
-			if(((pb >> 11) & 1) || (pa & 0x04)) k |= (1<<SDID_MOVEUP);
-			if(((pb >> 12) & 1) || (pa & 0x08)) k |= (1<<SDID_MOVEDOWN);
-			if(((pb >> 13) & 1) || (pa & 0x01)) k |= (1<<SDID_MOVELEFT);
-			if(((pb >> 14) & 1) || (pa & 0x02)) k |= (1<<SDID_MOVERIGHT);
-			if((pb >> 2) & 1)  k |= (1<<SDID_ATTACK);
-			if((pb >> 3) & 1)  k |= (1<<SDID_ATTACK2);
-			if((pb >> 9) & 1)  k |= (1<<SDID_ATTACK3);
-			if((pb >> 10) & 1) k |= (1<<SDID_ATTACK4);
-			if((pb >> 0) & 1)  k |= (1<<SDID_JUMP);
-			if((pb >> 1) & 1)  k |= (1<<SDID_SPECIAL);
-			if((pb >> 6) & 1)  k |= (1<<SDID_START);
+			if(((pb >> 11) & 1) || (pa & 0x04)) k |= FLAG_MOVEUP;
+			if(((pb >> 12) & 1) || (pa & 0x08)) k |= FLAG_MOVEDOWN;
+			if(((pb >> 13) & 1) || (pa & 0x01)) k |= FLAG_MOVELEFT;
+			if(((pb >> 14) & 1) || (pa & 0x02)) k |= FLAG_MOVERIGHT;
+			if((pb >> 2) & 1)  k |= FLAG_ATTACK;
+			if((pb >> 3) & 1)  k |= FLAG_ATTACK2;
+			if((pb >> 9) & 1)  k |= FLAG_ATTACK3;
+			if((pb >> 10) & 1) k |= FLAG_ATTACK4;
+			if((pb >> 0) & 1)  k |= FLAG_JUMP;
+			if((pb >> 1) & 1)  k |= FLAG_SPECIAL;
+			if((pb >> 6) & 1)  k |= FLAG_START;
 		}
 #endif
 		
