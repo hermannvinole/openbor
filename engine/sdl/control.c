@@ -47,6 +47,10 @@ void getPads(Uint8* keystate, Uint8* keystate_def)
 	SDL_Event ev;
 	while(SDL_PollEvent(&ev))
 	{
+				if(ev.type == SDL_JOYBUTTONDOWN) printf("DEBUG boton %d\n", ev.jbutton.button);
+		if(ev.type == SDL_JOYHATMOTION) printf("DEBUG hat %d valor %d\n", ev.jhat.hat, ev.jhat.value);
+		if(ev.type == SDL_JOYAXISMOTION && (ev.jaxis.value > 16000 || ev.jaxis.value < -16000)) printf("DEBUG eje %d valor %d\n", ev.jaxis.axis, ev.jaxis.value);
+		if(ev.type == SDL_KEYDOWN) printf("DEBUG tecla %d\n", ev.key.keysym.scancode);
 		switch(ev.type)
 		{
 			case SDL_KEYDOWN:
